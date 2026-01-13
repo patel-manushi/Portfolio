@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ===== META TAGS ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== TITLE ===== -->
+  <title>Manushi Patel | Portfolio</title>z
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+html { scroll-behavior: smooth; }
+
+body { background: #0e0a1c; color: #f3f0ff; overflow-x: hidden; position: relative; min-height: 100vh; }
+
+/* ===== STAR BACKGROUND ===== */
+#stars { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+
+/* ===== NAVBAR (FINAL + POLISHED) ===== */
+nav { position: fixed; top: 0; width: 100%; height: 90px; padding: 0 80px; display: flex; align-items: center; justify-content: space-between; z-index: 1000; background: linear-gradient(180deg, rgba(26,18,58,0.95), rgba(14,10,28,0.9)); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(167,139,250,0.15); box-shadow: 0 8px 30px rgba(0,0,0,0.35); }
+
+/* ===== LOGO ===== */
+.logo { font-size: 30px; font-weight: 700; letter-spacing: 1px; color: #d6ccff; }
+
+/* ===== NAV LINKS LIST ===== */
+nav ul { list-style: none; display: flex; gap: 45px; margin: 0; padding: 0; }
+
+/* ===== NAV LINKS ===== */
+nav a { position: relative; font-size: 1.05rem; font-weight: 500; color: #c7c2e2; text-decoration: none; display: flex; align-items: center; letter-spacing: 0.3px; transition: all 0.3s ease; }
+
+nav a i { margin-right: 8px; font-size: 15px; }
+
+nav a:hover, nav a.active { color: #a78bfa; text-shadow: 0 0 8px rgba(167,139,250,0.6); }
+
+nav a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: #a78bfa; border-radius: 2px; transition: width 0.3s ease; }
+
+nav a:hover::after, nav a.active::after { width: 100%; }
+
+/* ===== SECTIONS ===== */
+.section { min-height: 100vh; padding: 140px 10%; }
+#about h2.title {
+  color: #d6ccff !important;
+  text-shadow: 0 0 12px rgba(167,139,250,0.35);
+}
+
+
+/* ===== HERO ===== */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 120px 6%; }
+
+.hero-text { max-width: 520px; }
+
+.hero-text h1 { font-size: 46px; font-weight: 600; color: #e9d5ff;  }
+
+.hero-text h2 { font-size: 42px; margin-top: 10px; color: #ffffff; }
+
+.hero-text h3 { font-size: 26px; margin-top: 16px; color: #a78bfa; }
+
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 120px 8%; gap: 40px; }
+
+.hero-image { width: 45%; display: flex; justify-content: center; align-items: center; }
+
+.hero-image img { width: 620px; max-width: 200%; height: auto; transform: translateX(-40px);  filter: drop-shadow(0 20px 60px rgba(167,139,250,0.35));animation: floatImg 6s ease-in-out infinite; }
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.hero-image {
+  animation: float 6s ease-in-out infinite;
+}
+
+
+/* ===== BUTTON ===== */
+.btn { display: inline-block; margin-top: 35px; padding: 14px 36px; background: #a78bfa; color: #0e0a1c; font-weight: 600; border-radius: 30px; text-decoration: none; box-shadow: 0 8px 25px rgba(167,139,250,0.35); transition: 0.4s; }
+
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(167,139,250,0.55); }
+
+/* ===== TITLES ===== */
+.title { font-size: 40px; margin-bottom: 30px; color: #d6ccff; }
+
+/* ===== TEXT ===== */
+p { color: #b8b2d6; max-width: 750px; line-height: 1.8; }
+
+/* ===== SKILLS ===== */
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 25px; margin-top: 40px; }
+
+.card { padding: 28px; background: rgba(27,20,51,0.65); border-radius: 18px; text-align: center; border: 1px solid rgba(168,139,250,0.25); backdrop-filter: blur(12px); transition: 0.4s; }
+
+.card:hover { transform: translateY(-12px); box-shadow: 0 10px 28px rgba(167,139,250,0.25); }
+
+
+
+/* ===== PROJECTS ===== */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 40px; }
+
+.project-card { height: 160px; background: linear-gradient(145deg, #1b1433, #0e0a1c); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-weight: 600; border: 1px solid rgba(168,139,250,0.25); transition: 0.4s; }
+
+.project-card:hover { transform: scale(1.04); box-shadow: 0 0 30px rgba(167,139,250,0.35); }
+
+/* ===== REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(60px); transition: 1s ease; }
+
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+/* ===== SKILLS ICON SECTION ===== */
+.skills-section { padding: 100px 8%; background: radial-gradient(circle at top, #201747, #0e0a1c); }
+
+.section-title { text-align: center; font-size: 2.8rem; margin-bottom: 60px; color: #d6ccff; }
+
+.icon-skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 30px; justify-items: center; }
+
+.icon-card { width: 110px; height: 110px; background: rgba(255,255,255,0.03); border: 1px solid rgba(168,139,250,0.25); border-radius: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.35s ease; }
+
+.icon-card i { font-size: 3.2rem; color: #a78bfa; }
+
+.icon-card:hover { transform: translateY(-8px); box-shadow: 0 8px 22px rgba(167,139,250,0.35); }
+
+.icon-card:hover i { color: #ffffff; }
+
+
+/* ===== PROJECTS SECTION ===== */
+.projects-section { padding: 90px 5%; background: #0e0a1c; }
+
+.projects-section .section-title { font-size: 2.8rem; text-align: center; color: #d6ccff; margin-bottom: 60px; }
+
+/* ===== PROJECT GRID ===== */
+.projects-grid { display: grid; grid-template-columns: repeat(3, minmax(320px, 1fr)); gap: 30px; align-items: stretch; }
+
+/* ===== PROJECT CARD ===== */
+.project-box { background: #1b1433; border-radius: 18px; padding: 26px; width: 100%; box-shadow: 0 12px 34px rgba(0,0,0,0.45); transition: transform 0.35s ease, box-shadow 0.35s ease; }
+
+.project-box:hover { transform: translateY(-8px); box-shadow: 0 18px 44px rgba(167,139,250,0.3); }
+
+/* ===== PROJECT IMAGE ===== */
+.project-box img { width: 100%; height: 220px; object-fit: contain; border-radius: 14px; padding: 10px; margin-bottom: 18px; background: rgba(255,255,255,0.03); }
+
+/* ===== PROJECT TITLE ===== */
+.project-box h3 { font-size: 1.2rem; color: #a78bfa; margin-bottom: 12px; }
+
+/* ===== PROJECT DESCRIPTION ===== */
+.project-box p { font-size: 0.95rem; line-height: 1.65; color: #b8b2d6; margin-bottom: 18px; text-align: justify; }
+
+/* ===== PROJECT BUTTON ===== */
+.project-btn { display: inline-block; padding: 10px 24px; background: transparent; color: #a78bfa; border: 1px solid #a78bfa; border-radius: 30px; text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; }
+
+.project-btn:hover { background: #a78bfa; color: #0e0a1c; }
+
+/* ================= RESUME SECTION ================= */
+.resume-section { min-height: 100vh; padding: 120px 8%; background: radial-gradient(circle at top, #120a24, #0b0616); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+.resume-text { font-size: 1.05rem; color: #c4b5fd; margin-bottom: 35px; max-width: 520px; }
+
+.resume-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+.resume-btn { padding: 14px 34px; font-size: 15px; border-radius: 999px; }
+
+.resume-btn.outline { background: transparent; border: 1.5px solid #a78bfa; color: #a78bfa; }
+
+.resume-btn.outline:hover { background: #a78bfa; color: #0b0616; }
+
+/* ================= STAR VISIBILITY FIX ================= */
+#stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -10; pointer-events: none; }
+
+nav { position: fixed; top: 0; z-index: 9999; }
+
+.section, .skills-section, .projects-section { position: relative; z-index: 1; }
+
+.skills-section { background: rgba(14,10,28,0.9); }
+
+.projects-section { background: rgba(14,10,28,0.9); }
+
+.logo { font-family: 'Poppins','Inter',sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 3px; color: #d6ccff; text-transform: uppercase; cursor: pointer; }
+
+.logo:hover { color: #a78bfa; }
+
+/* ================= ABOUT ME SECTION ================= */
+#about .title { font-size: 2.6rem; font-weight: 700; color: #f5f3ff; margin-bottom: 28px; }
+
+#about .title::after { display: none; }
+
+#about p { max-width: 840px; font-size: 1.12rem; line-height: 1.9;  color: #c9c5e8; margin-bottom: 22px; text-align: justify; text-justify: inter-word; }
+
+#about strong { color: #d6ccff; font-weight: 600; }
+
+.about-divider { display: none; }
+
+.nav-links a.active { color: #a78bfa; }
+
+.nav-links a.active i { color: #a78bfa; }
+
+section { scroll-margin-top: 80px; }
+
+/* ===== CONTACT SECTION ===== */
+.contact-section { background: #0e0a1c; padding: 90px 8%; display: flex; flex-direction: column; align-items: center; }
+
+#contact .title { text-align: center; margin-bottom: 20px; }
+
+.contact-text { max-width: 720px; font-size: 1.05rem; color: #b8b2d6; line-height: 1.8; margin-bottom: 40px; text-align: center; }
+
+.contact-form { width: 100%; max-width: 620px; background: rgba(27,20,51,0.65); padding: 35px; border-radius: 18px; border: 1px solid rgba(167,139,250,0.25); backdrop-filter: blur(12px); }
+
+.form-group { margin-bottom: 20px; }
+
+/* ================= CONTACT SECTION ================= */
+.contact-section { min-height: 100vh; padding: 120px 8%; background: radial-gradient(circle at top, #120a24, #0b0616); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+
+.contact-section::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(#ffffff14 1px, transparent 1px); background-size: 45px 45px; z-index: 0; }
+
+.contact-section * { position: relative; z-index: 1; }
+
+.contact-section .title { font-size: 42px; font-weight: 700; color: #e9d5ff; margin-bottom: 10px; }
+
+.contact-text { font-size: 16px; color: #c4b5fd; margin-bottom: 40px; max-width: 520px; }
+
+/* ================= FORM CARD ================= */
+.contact-form { width: 100%; max-width: 520px; padding: 36px; border-radius: 22px; background: linear-gradient(145deg, rgba(167,139,250,0.12), rgba(167,139,250,0.04)); backdrop-filter: blur(14px); border: 1px solid rgba(167,139,250,0.35); box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04); transition: 0.4s ease; }
+
+.contact-form:hover { transform: translateY(-6px); box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 40px rgba(167,139,250,0.25); }
+
+/* ================= INPUTS ================= */
+.form-group { margin-bottom: 22px; }
+
+.contact-form input, .contact-form textarea { width: 100%; padding: 14px 16px; background-color: rgba(11,6,22,0.9) !important; border-radius: 10px; border: 1.5px solid rgba(167,139,250,0.6) !important; color: #ffffff !important; font-size: 15px; outline: none; transition: all 0.3s ease; }
+
+.contact-form textarea { height: 130px; resize: none; }
+
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #c4b5fd !important; opacity: 0.9; }
+
+.contact-form input:focus, .contact-form textarea:focus { background-color: rgba(11,6,22,0.95) !important; border-color: #a78bfa !important; box-shadow: 0 0 0 3px rgba(167,139,250,0.25), 0 0 18px rgba(167,139,250,0.35); }
+
+/* ================= REMOVE AUTOFILL WHITE ================= */
+.contact-form input:-webkit-autofill, .contact-form input:-webkit-autofill:hover, .contact-form input:-webkit-autofill:focus, .contact-form textarea:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px #0b0616 inset !important; -webkit-text-fill-color: #ffffff !important; transition: background-color 9999s ease-in-out 0s; }
+
+/* ================= BUTTON ================= */
+.contact-form .btn { margin-top: 16px; padding: 14px 36px; background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: #0b0616; border: none; border-radius: 999px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 12px 30px rgba(167,139,250,0.45); }
+
+.contact-form .btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 18px 45px rgba(167,139,250,0.65), 0 0 25px rgba(167,139,250,0.6); }
+
+.contact-form .btn:active { transform: scale(0.97); }
+
+
+.menu-toggle{display:none;font-size:26px;color:#a78bfa;cursor:pointer}
+
+.footer{padding:45px 8%;background:#0e0a1c;border-top:1px solid rgba(167,139,250,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center}
+.footer p{font-size:14px;color:#b8b2d6}
+.footer-social{display:flex;gap:22px}
+.footer-social a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(167,139,250,.15);color:#a78bfa;font-size:18px;transition:.3s}
+.footer-social a:hover{background:#a78bfa;color:#0e0a1c;transform:translateY(-4px)}
+
+.title,.section-title,#about .title,#contact .title,.contact-section .title,.projects-section .section-title{font-size:40px!important;font-weight:700!important;color:#d6ccff!important;text-align:center!important;margin-bottom:30px!important;text-shadow:0 0 12px rgba(167,139,250,.35)!important;letter-spacing:1px}
+
+#about .title{text-align:left!important;margin-left:0!important}
+.resume-section{background:transparent!important}
+
+.navbar{position:fixed;top:0;width:100%;height:90px;padding:0 30px;display:flex;align-items:center;justify-content:space-between;background:#120a24;z-index:100000}
+.logo{color:#fff;font-size:26px;font-weight:700}
+.nav-links{list-style:none;display:flex;gap:35px}
+.nav-links a{color:#fff;text-decoration:none;font-size:16px}
+
+/* ======================================================
+   NAVBAR (COMMON)
+====================================================== */
+.navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 90px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #120a24;
+  z-index: 100000;
+}
+
+.logo{
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.nav-links{
+  list-style: none;
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.menu-toggle{
+  display: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ======================================================
+   SECTION BACKGROUNDS
+====================================================== */
+#about,
+.skills-section,
+.projects-section,
+.resume-section,
+.contact-section{
+  background: rgba(14,10,28,.9) !important;
+  backdrop-filter: none;
+  position: relative;
+  z-index: 1;
+}
+
+#about,
+.resume-section,
+.contact-section{
+  background-image: none !important;
+}
+/* ================= FINAL MOBILE HERO – CENTERED ================= */
+@media (max-width: 480px) {
+
+  /* HERO SECTION CENTER */
+  #home,
+  .hero {
+    min-height: 100vh;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* 🔥 PERFECT CENTER */
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  /* TEXT */
+  .hero-text h1 {
+    font-size: 28px;
+  }
+
+  .hero-text h2 {
+    font-size: 22px;
+  }
+
+  .hero-text h3 {
+    font-size: 16px;
+  }
+
+  /* IMAGE */
+  .hero-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 380px;   /* 🔥 BIG IMAGE */
+    height: auto;
+    transform: none;
+  }
+}
+
+</style>
+
+  <!-- ===== CSS FILE ===== -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ===== GOOGLE FONTS ===== -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- ===== ICON LIBRARIES ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+</head>
+
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar">
+    <div class="logo">MP</div>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="#home"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="#about"><i class="fas fa-user"></i> About Me</a></li>
+      <li><a href="#skillset"><i class="fas fa-code"></i> Skillset</a></li>
+      <li><a href="#projects"><i class="fas fa-laptop-code"></i> Projects</a></li>
+      <li><a href="#resume"><i class="fas fa-file-lines"></i> Resume</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+
+    <div class="menu-toggle" id="menuToggle">☰</div>
+  </nav>
+  <!-- ================== NAVBAR END ================== -->
+
+
+  <!-- ================= STAR BACKGROUND ================= -->
+  <canvas id="stars"></canvas>
+  <!-- ================= STAR BACKGROUND END ============= -->
+
+
+  <!-- ===================== HOME ===================== -->
+  <section id="home" class="section hero">
+
+    <div class="hero-text">
+      <h1>Hi There!👋</h1>
+      <h2>I'm <span class="purple">Manushi Patel</span></h2>
+      <h3 class="typing"></h3>
+    </div>
+
+    <div class="hero-image">
+      <img src="images/img1.png" alt="Developer Illustration">
+    </div>
+
+  </section>
+  <!-- =================== HOME END =================== -->
+
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="section reveal">
+    <h2 class="title">About Me</h2>
+
+    <p>
+      I am a motivated and detail-oriented IT professional with a strong academic
+      foundation in Information Technology. I have completed my
+      <strong>B.Sc. in IT</strong> and I am currently pursuing
+      <strong>M.Sc. in Information Technology</strong>.
+    </p>
+
+    <div class="about-divider"></div>
+
+    <p>
+      During my academic years, I have worked on multiple projects and created
+      several attractive, responsive, and user-friendly websites.
+    </p>
+
+    <p>
+      I am currently seeking opportunities for an
+      <strong>internship or full-time job</strong>
+      in the IT field to build a strong career and gain industry experience.
+    </p>
+  </section>
+  <!-- =================== ABOUT END =================== -->
+
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skillset" class="skills-section">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="icon-skill-grid">
+
+      <!-- Programming Languages -->
+      <div class="icon-card"><i class="devicon-c-plain"></i></div>
+      <div class="icon-card"><i class="devicon-java-plain"></i></div>
+      <div class="icon-card"><i class="devicon-python-plain"></i></div>
+      <div class="icon-card"><i class="devicon-csharp-plain"></i></div>
+
+      <!-- Web Technologies -->
+      <div class="icon-card"><i class="devicon-html5-plain"></i></div>
+      <div class="icon-card"><i class="devicon-css3-plain"></i></div>
+      <div class="icon-card"><i class="devicon-javascript-plain"></i></div>
+
+      <!-- Backend / CMS -->
+      <div class="icon-card"><i class="devicon-php-plain"></i></div>
+      <div class="icon-card"><i class="devicon-wordpress-plain"></i></div>
+      <div class="icon-card"><i class="devicon-magento-original"></i></div>
+
+      <!-- Databases -->
+      <div class="icon-card"><i class="devicon-mysql-plain"></i></div>
+      <div class="icon-card"><i class="devicon-sqlite-plain"></i></div>
+      <div class="icon-card"><i class="devicon-oracle-original"></i></div>
+
+      <!-- Tools -->
+      <div class="icon-card"><i class="fa-brands fa-microsoft"></i></div>
+      <div class="icon-card"><i class="devicon-visualstudio-plain"></i></div>
+      <div class="icon-card"><i class="devicon-android-plain"></i></div>
+
+    </div>
+  </section>
+  <!-- =================== SKILLS END =================== -->
+
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects" class="projects-section">
+    <h2 class="section-title">My Projects</h2>
+
+    <div class="projects-grid">
+
+      <!-- ===== Project 1 ===== -->
+      <div class="project-box">
+        <img src="images/home.jpg" alt="Weather App">
+
+        <h3>Weather Forecast Web App</h3>
+
+        <p style="text-align: justify;">
+          A web-based weather forecasting application developed using Python
+          (Flask) that provides real-time weather information along with a 6-day
+          weather forecast. The application integrates the OpenWeatherMap API
+          to fetch live weather data and displays temperature, humidity,
+          wind speed, and weather conditions through a clean interface.
+        </p>
+
+        <a href="https://github.com/patel-manushi/Weather-Forecast-Web-App"
+           class="project-btn" target="_blank">
+          View Project
+        </a>
+      </div>
+
+      <!-- ===== Project 2 ===== -->
+      <div class="project-box">
+        <img src="images/cake.png" alt="House of Cakes">
+
+        <h3>House of Cakes</h3>
+
+        <p style="text-align: justify;">
+          A cake website developed to display a wide variety of cakes and chocolates
+          with product images, names, and quantity selection. The website includes a
+          user login system and an add-to-cart functionality that allows users to
+          select products, manage their cart, and place orders through a simple and
+          user-friendly interface. 
+        </p>
+
+        <a href="https://github.com/patel-manushi/Cake-Ordering-Platform" class="project-btn">View Project</a>
+      </div>
+
+      <!-- ===== Project 3 ===== -->
+      <div class="project-box">
+        <img src="images/wedding.png" alt="wedding">
+
+        <h3>Wedding Management System</h3>
+
+        <p style="text-align: justify;">
+         A wedding management system developed to simplify wedding planning through a single platform. Users can explore and book services, get professional consultancy support, and contact the team easily. An admin panel helps manage services, bookings, and customer interactions efficiently.
+        </p>
+
+        <a href="https://github.com/patel-manushi/Wedding-Management-System" class="project-btn">View Project</a>
+      </div>
+
+    </div>
+
+  </section>
+  <!-- =================== PROJECTS END =================== -->
+
+
+  <!-- ===================== RESUME ===================== -->
+  <section id="resume" class="section resume-section">
+    <h2 class="title">My Resume</h2>
+
+    <p class="resume-text">
+      My resume is available for online viewing and download.
+    </p>
+
+    <div class="resume-buttons">
+      <a href="assets/Resume.pdf" target="_blank" class="btn resume-btn">
+        <i class="fas fa-eye"></i> View Resume
+      </a>
+
+      <a href="assets/Resume.pdf" download class="btn resume-btn outline">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+    </div>
+  </section>
+  <!-- =================== RESUME END =================== -->
+
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="section reveal contact-section">
+    <h2 class="title">Contact Me</h2>
+
+    <p class="contact-text">
+      Let’s connect — contact me for work or opportunities.
+    </p>
+
+    <form class="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST">
+
+      <input type="hidden" name="access_key" value="0d57e3ff-6cf3-4af6-90b0-5e75a6d79333">
+      <input type="hidden" name="subject" value="New Contact Message from Portfolio">
+
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+
+      <div class="form-group">
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+  <!-- =================== CONTACT END =================== -->
+
+
+  <!-- ===== JAVASCRIPT FILE ===== -->
+  <script src="script.js"></script>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Designed & Developed by Manushi Patel</p>
+
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/manushi-patel-b059a7396" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+
+      <a href="https://github.com/patel-manushi" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

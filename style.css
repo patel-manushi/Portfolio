@@ -1,0 +1,170 @@
+/* ======================================================
+   LAPTOP (≤1100px)
+====================================================== */
+@media (max-width:1100px){
+
+  .section,
+  .skills-section,
+  .projects-section,
+  .resume-section,
+  .contact-section{
+    padding: 120px 8%;
+  }
+
+  .projects-grid{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .hero{
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+}
+
+/* ======================================================
+   TABLET (≤900px)
+====================================================== */
+@media (max-width:900px){
+
+  nav{
+    height: 80px;
+    padding: 0 30px;
+  }
+
+  .menu-toggle{
+    display: block;
+  }
+
+  .nav-links{
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #0e0a1c;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 0;
+    display: none;
+  }
+
+  .nav-links.active{
+    display: flex;
+  }
+
+  .section,
+  .skills-section,
+  .projects-section,
+  .resume-section,
+  .contact-section{
+    padding: 110px 6%;
+  }
+
+  .skill-grid{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .hero{
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+}
+
+/* ======================================================
+   SMALL TABLET (≤768px)
+====================================================== */
+@media (max-width:768px){
+
+  .title,
+  .section-title{
+    font-size: 32px;
+  }
+
+  p{
+    font-size: 15px;
+  }
+
+  .projects-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .icon-skill-grid{
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .resume-buttons{
+    flex-direction: column;
+  }
+
+  .contact-form{
+    padding: 28px;
+  }
+}
+
+/* ======================================================
+   MOBILE (≤480px)
+====================================================== */
+@media (max-width:480px){
+
+  nav,
+  .navbar{
+    padding: 0 20px;
+  }
+
+  .section,
+  .skills-section,
+  .projects-section,
+  .resume-section,
+  .contact-section{
+    padding: 100px 5% 60px;
+    text-align: center;
+  }
+
+  .hero{
+    min-height: 100vh;
+    padding-top: 110px;
+    gap: 28px;
+  }
+
+  .hero-text h1{
+    font-size: 28px;
+  }
+
+  .hero-text h2{
+    font-size: 22px;
+  }
+
+  .hero-text h3{
+    font-size: 16px;
+  }
+
+  .icon-skill-grid{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .contact-form{
+    padding: 24px;
+  }
+
+  footer{
+    padding: 35px 6%;
+  }
+}
+
+@media (max-width:1100px),
+       (max-width:900px),
+       (max-width:768px),
+       (max-width:480px){
+
+  .hero{
+    text-align: center !important;     
+    align-items: flex-start !important;
+  }
+
+  .hero-text{
+    width: 100%;
+  }
+}
+
